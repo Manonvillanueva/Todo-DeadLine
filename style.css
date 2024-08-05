@@ -1,0 +1,101 @@
+@font-face {
+  font-family: Angella-White;
+  src: url(./font/Angella\ White.otf);
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url(./font/Montserrat-VariableFont_wght.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Montserrat, verdana;
+  text-align: center;
+  outline: none;
+}
+
+body {
+  height: 100vh;
+}
+
+h1 {
+  padding: 20px;
+  font-family: Angella-White, Verdana;
+  font-size: 100px;
+  font-weight: 100;
+}
+
+header {
+  text-align: center;
+}
+#addNote {
+  background: #f0e4db;
+  border: none;
+  border-radius: 50px;
+  font-size: 20px;
+  padding: 15px 40px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+#addNote:hover {
+  background: #816559;
+  color: #f0e4db;
+}
+
+#formContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+form {
+  background: #816559;
+  padding: 60px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  font-size: 20px;
+  border: none;
+  padding: 10px;
+}
+
+textarea {
+  resize: none;
+  padding: 10px;
+}
+
+#spaceBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#returnBtn {
+  border-radius: 50%;
+  padding: 5px;
+  color: #f0e4db;
+  font-size: 20px;
+}
+
+#returnBtn:hover {
+  cursor: pointer;
+  border: solid 1px #f0e4db;
+}
+
+#validBtn {
+  background: #f0e4db;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
