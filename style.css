@@ -13,7 +13,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Montserrat, verdana;
-  text-align: center;
   outline: none;
 }
 
@@ -98,4 +97,22 @@ textarea {
   font-size: 20px;
   padding: 10px 20px;
   cursor: pointer;
+}
+
+#toDoContainer {
+  display: flex;
+}
+
+#toDoList {
+  display: flex;
+  padding: 20px;
+}
+
+#iconPart {
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: #816559;
 }
