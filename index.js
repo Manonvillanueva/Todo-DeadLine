@@ -30,15 +30,18 @@ const getStorage = () => {
     </div>
     <div id="iconPart">
     <i class="fa-solid fa-pencil"></i>
-    <i class="fa-solid fa-trash" id="trash"></i>
+    <i class="fa-solid fa-trash" ></i>
     </div>
     </div>`;
   });
-  const trashLogo = document.querySelectorAll("#trash");
-  trashLogo.forEach((trashBtn) => {
+  const trashLogo = document.querySelectorAll(".fa-trash");
+  trashLogo.forEach((trashBtn, data) => {
     trashBtn.addEventListener("click", (e) => {
       if (confirm("Etes-vous sûr(e) de vouloir supprimer cette note ?")) {
-        console.log(e.target.dataset);
+        notesArr.splice(data, 1);
+        const notesStringify = JSON.stringify(notesArr);
+        localStorage.setItem("notes", notesStringify);
+        location.reload();
       }
     });
   });
