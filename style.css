@@ -101,11 +101,16 @@ textarea {
 
 #toDoContainer {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 50px;
 }
 
 #toDoList {
   display: flex;
   padding: 20px;
+  width: 200px;
+  justify-content: space-between;
 }
 
 #iconPart {
@@ -115,4 +120,8 @@ textarea {
   flex-direction: column;
   justify-content: space-evenly;
   color: #816559;
+}
+
+#trash {
+  cursor: pointer;
 }

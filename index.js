@@ -1,4 +1,4 @@
-// => ADD TO LOCAL STORAGE
+// => AJOUTER AU LOCAL STORAGE
 const addLocalStorage = () => {
   // => Récupérer les données qui sont dans le local Storage ayant la key ("notes")
   let getNotes = localStorage.getItem("notes");
@@ -17,10 +17,11 @@ const addLocalStorage = () => {
   localStorage.setItem("notes", noteString);
 };
 
+//=> RECUPERER DU LOCAL STORAGE
 const getStorage = () => {
   let dataNotes = localStorage.getItem("notes");
-  let coucou = dataNotes ? JSON.parse(dataNotes) : [];
-  coucou.forEach((data) => {
+  let notesArr = dataNotes ? JSON.parse(dataNotes) : [];
+  notesArr.forEach((data) => {
     toDoContainer.innerHTML += `<div id="toDoList">
     <div>
       <h2>${data.title}</h2>
@@ -29,9 +30,17 @@ const getStorage = () => {
     </div>
     <div id="iconPart">
     <i class="fa-solid fa-pencil"></i>
-    <i class="fa-solid fa-trash"></i>
+    <i class="fa-solid fa-trash" id="trash"></i>
     </div>
     </div>`;
+  });
+  const trashLogo = document.querySelectorAll("#trash");
+  trashLogo.forEach((trashBtn) => {
+    trashBtn.addEventListener("click", (e) => {
+      if (confirm("Etes-vous sûr(e) de vouloir supprimer cette note ?")) {
+        console.log(e.target.dataset);
+      }
+    });
   });
 };
 
