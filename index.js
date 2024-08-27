@@ -39,6 +39,27 @@ const getStorage = () => {
     </div>
     </div>`;
   });
+
+  const penLogo = document.querySelectorAll(".fa-pencil");
+  penLogo.forEach((penBtn, index) => {
+    let noteToModify = dataNotesArr[index];
+    penBtn.addEventListener("click", () => {
+      formContainer.innerHTML = `<form>
+      <input id="titleToModify" type="text" value="${noteToModify.title}"></input>
+      <textarea id="descriptionToModify" value="${noteToModify.description}"></textarea>
+      <input id="dateToModify" type="date" value="${noteToModify.date}"></input>
+      <div id="spaceBetween">
+      <i class="fa-solid fa-rotate-left" id="returnBtn"></i>
+      <button id="validBtn">Modifier</button>
+      </div>
+    </form>`;
+
+      returnBtn.addEventListener("click", () => {
+        formContainer.innerHTML = "";
+      });
+    });
+  });
+
   const trashLogo = document.querySelectorAll(".fa-trash");
   trashLogo.forEach((trashBtn, data) => {
     trashBtn.addEventListener("click", (e) => {

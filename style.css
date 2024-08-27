@@ -122,6 +122,8 @@ textarea {
   color: #816559;
 }
 
-.fa-trash {
+.fa-trash:hover,
+.fa-pencil:hover {
   cursor: pointer;
+  scale: 1.2;
 }
