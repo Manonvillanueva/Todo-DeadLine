@@ -2,26 +2,31 @@
 const addLocalStorage = () => {
   // => Récupérer les données qui sont dans le local Storage ayant la key ("notes")
   let getNotes = localStorage.getItem("notes");
-  // => Vérifier si il y a bien des données si oui .. sinon j'initialise un tableau vide
+  // => Initialise notesArray avec les notes récupérées depuis getNotes, ou avec un tableau vide si aucunes notes est diponible dans getNotes .
   let notesArray = getNotes ? JSON.parse(getNotes) : [];
-
+  // => Création d'un objet avec les valeurs mis dans les champs du formulaire
   let note = {
     title: addTitle.value,
     description: textarea.value,
     date: dueDate.value,
   };
-
+  // => Ajoute la note dans mon tableau notesArray
   notesArray.push(note);
+  // => Pour pouvoir l'ajouter au localStorage il faut utiliser stringify() car on peut seulement enregistrer des strings dans le localStorage
   const noteString = JSON.stringify(notesArray);
-
+  // => Met à jour le localStorage (clé,valeur)
   localStorage.setItem("notes", noteString);
 };
 
 //=> RECUPERER DU LOCAL STORAGE
 const getStorage = () => {
+  // => Récupérer mes notes dans le localStorage ayant la key "notes"
   let dataNotes = localStorage.getItem("notes");
-  let notesArr = dataNotes ? JSON.parse(dataNotes) : [];
-  notesArr.forEach((data) => {
+  // => Initialise dataNotesArr avec les notes récupérees depuis dataNotes ou avec un tableau vide si aucunes notes est dispo
+  let dataNotesArr = dataNotes ? JSON.parse(dataNotes) : [];
+  // => En parcourant chaque élément de mon tableau dataNotesArr , je créee un bloc HTML avec les propriétes title, description et date de chaque note qui est ajouté dans mon main "toDoContainer"
+  // => IMPORTANT , utiliser += afin de pouvoir ajouter une note sans écraser la précédente
+  dataNotesArr.forEach((data) => {
     toDoContainer.innerHTML += `<div id="toDoList">
     <div>
       <h2>${data.title}</h2>
@@ -38,8 +43,8 @@ const getStorage = () => {
   trashLogo.forEach((trashBtn, data) => {
     trashBtn.addEventListener("click", (e) => {
       if (confirm("Etes-vous sûr(e) de vouloir supprimer cette note ?")) {
-        notesArr.splice(data, 1);
-        const notesStringify = JSON.stringify(notesArr);
+        dataNotesArr.splice(data, 1);
+        const notesStringify = JSON.stringify(dataNotesArr);
         localStorage.setItem("notes", notesStringify);
         location.reload();
       }

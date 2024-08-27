@@ -122,6 +122,6 @@ textarea {
   color: #816559;
 }
 
-#trash {
+.fa-trash {
   cursor: pointer;
 }
