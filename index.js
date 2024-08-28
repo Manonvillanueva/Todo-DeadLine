@@ -40,29 +40,43 @@ const getStorage = () => {
     </div>`;
   });
 
+  // => MODIFIER DU LOCAL STORAGE
   const penLogo = document.querySelectorAll(".fa-pencil");
   penLogo.forEach((penBtn, index) => {
+    // => Récupérer les données de la note correspondante
     let noteToModify = dataNotesArr[index];
     penBtn.addEventListener("click", () => {
       formContainer.innerHTML = `<form>
       <input id="titleToModify" type="text" value="${noteToModify.title}"></input>
-      <textarea id="descriptionToModify" value="${noteToModify.description}"></textarea>
+      <textarea id="descriptionToModify" placeholder="Ajouter une description">${noteToModify.description}</textarea>
       <input id="dateToModify" type="date" value="${noteToModify.date}"></input>
       <div id="spaceBetween">
       <i class="fa-solid fa-rotate-left" id="returnBtn"></i>
-      <button id="validBtn">Modifier</button>
+      <button id="modifyBtn">Modifier</button>
       </div>
     </form>`;
 
       returnBtn.addEventListener("click", () => {
         formContainer.innerHTML = "";
       });
+
+      modifyBtn.addEventListener("click", () => {
+        if (titleToModify.value == "" || dateToModify.value == "") {
+          alert("Veuillez entrer un titre");
+        } else {
+          dataNotesArr[index].title = titleToModify.value;
+          dataNotesArr[index].description = descriptionToModify.value;
+          dataNotesArr[index].date = dateToModify.value;
+          localStorage.setItem("notes", JSON.stringify(dataNotesArr));
+        }
+      });
     });
   });
 
+  // => SUPPRIMER DU LOCAL STORAGE
   const trashLogo = document.querySelectorAll(".fa-trash");
   trashLogo.forEach((trashBtn, data) => {
-    trashBtn.addEventListener("click", (e) => {
+    trashBtn.addEventListener("click", () => {
       if (confirm("Etes-vous sûr(e) de vouloir supprimer cette note ?")) {
         dataNotesArr.splice(data, 1);
         const notesStringify = JSON.stringify(dataNotesArr);

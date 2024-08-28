@@ -90,7 +90,8 @@ textarea {
   border: solid 1px #f0e4db;
 }
 
-#validBtn {
+#validBtn,
+#modifyBtn {
   background: #f0e4db;
   border: none;
   border-radius: 10px;
