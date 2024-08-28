@@ -43,7 +43,7 @@ const getStorage = () => {
   // => MODIFIER DU LOCAL STORAGE
   const penLogo = document.querySelectorAll(".fa-pencil");
   penLogo.forEach((penBtn, index) => {
-    // => Récupérer les données de la note correspondante
+    // => Récupérer les données de la note correspondante via l'index
     let noteToModify = dataNotesArr[index];
     penBtn.addEventListener("click", () => {
       formContainer.innerHTML = `<form>
